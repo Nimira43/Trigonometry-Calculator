@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'tan':
               displayValue = Math.tan(angle).toFixed(maxDecimals)
               break
+            case 'sec':
+              displayValue = (1 / Math.cos(angle)).toFixed(maxDecimals)
+              break
+            case 'csc':
+              displayValue = (1 / Math.sin(angle)).toFixed(maxDecimals)
+              break
+            case 'cot':
+              displayValue = (1 / Math.tan(angle)).toFixed(maxDecimals)
+              break
           }
         } else {
           displayValue = 'Error'
