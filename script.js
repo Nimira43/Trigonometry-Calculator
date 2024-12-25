@@ -22,6 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (buttonValue === 'C') {
         displayValue = '0'
+
+
+      } else if (trigFunctions.includes(buttonValue)) {
+      
+
+
+
+
+
       } else {
         const lastChar = displayValue.slice(-1)
         
