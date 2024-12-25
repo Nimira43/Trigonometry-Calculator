@@ -1,3 +1,16 @@
+## Trigononmetry Calculator
+
+#### Buttons
+
+###### Sine (sin)
+###### Cosine (cos)
+###### Tangent (tan)
+###### Squared (x^2)
+###### Secant (sec)
+###### Cosecant (csc)
+###### Cotangent (cot)
+###### Square Root (sqr)
+
 ## Trigonometric Functions Explained:
 
 #### Secant (sec):
@@ -11,3 +24,4 @@
 #### Cotangent (cot):
 ###### Definition: Cotangent is the reciprocal of the tangent function.
 ![Cotangent](images/cotangent.png)
+
