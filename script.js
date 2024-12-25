@@ -1,13 +1,13 @@
 const calculator = document.querySelector('.calculator')
 const calculatorButtons = [['1', '2', '3', '+'], ['4', '5', '6', '-'], ['7', '8', '9', '*'], ['C', '0', '=', '/']]
-const operands = ['+', '-', '*', '/']
-let myOutput
+const operators = ['+', '-', '*', '/']
+let output
 
 document.addEventListener('DOMContentLoaded', () => {
-  myOutput = document.createElement('div')
-  myOutput.innerHTML = '0'
-  myOutput.classList.add('output')
-  calculator.appendChild(myOutput)
+  output = document.createElement('div')
+  output.innerHTML = '0'
+  output.classList.add('output')
+  calculator.appendChild(output)
   for (let y = 0; y < calculatorButtons.length; y++) {
     let div = document.createElement('div')
     div.classList.add('row')
@@ -23,28 +23,28 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function btnHit(e) {
-    let myValue = this.innerText
-    let myCal = myOutput.innerText
-    if (myCal == '0') {
-        myCal = ''
+    let buttonValue = this.innerText
+    let calculateExpression = output.innerText
+    if (calculateExpression == '0') {
+        calculateExpression = ''
     }
-    if (myValue == '=') {
-        myCal = eval(myCal)
+    if (buttonValue == '=') {
+        calculateExpression = eval(calculateExpression)
     }
     else {
-        let lastChar = myCal.substring(myCal.length - 1)
-        if (operands.includes(myValue)) {
-            if (operands.includes(lastChar)) {
-                myCal = myCal.substring(0, myCal.length - 1)
+        let characterCheck = calculateExpression.substring(calculateExpression.length - 1)
+        if (operators.includes(buttonValue)) {
+            if (operators.includes(characterCheck)) {
+                calculateExpression = calculateExpression.substring(0, calculateExpression.length - 1)
             }
             else {
-                myCal = eval(myCal)
+                calculateExpression = eval(calculateExpression)
             }
         }
-        myCal = myCal + myValue
+        calculateExpression = calculateExpression + buttonValue
     }
-    if (myValue == 'C') {
-        myCal = 0
+    if (buttonValue == 'C') {
+        calculateExpression = 0
     }
-    myOutput.innerText = myCal
+    output.innerText = calculateExpression
 }
