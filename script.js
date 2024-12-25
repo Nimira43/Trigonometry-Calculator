@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
           switch (buttonValue) {
             case 'sin':
               displayValue = Math.sin(angle).toFixed(maxDecimals)
+              break
+            case 'cos':
+              displayValue = Math.cos(angle).toFixed(maxDecimals)
+              break
+            case 'tan':
+              displayValue = Math.tan(angle).toFixed(maxDecimals)
+              break
           }
         } else {
           displayValue = 'Error'
