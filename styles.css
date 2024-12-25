@@ -18,3 +18,12 @@ body {
   background-color: var(--dark);
   margin: 0;
 }
+
+.calculator {
+  width: 350px;
+  height: auto;
+  background-color: var(--primary);
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid var(--light);
+}
