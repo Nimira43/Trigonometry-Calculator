@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const output = document.querySelector('.output')
   const buttons = document.querySelectorAll('.btn')
   const operators = ['+', '-', '*', '/']
+  const maxDecimals = 8
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -13,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (buttonValue === '=') {
-        displayValue = eval(displayValue)
+        try {
+          displayValue = eval(displayValue).toFixed(maxDecimals)
+        } catch (e) {
+          displayValue = 'Error'
+        }
       } else if (buttonValue === 'C') {
         displayValue = '0'
       } else {
