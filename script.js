@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.btn')
   const operators = ['+', '-', '*', '/']
   const trigFunctions = ['sin', 'cos', 'tan', 'sec', 'csc', 'cot']
-  const otherFunctions = ['sqrt', 'x^2']
+  const otherFunctions = ['sqr', 'x^2']
   const maxDecimals = 8
 
   buttons.forEach(button => {
@@ -46,6 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
               displayValue = (1 / Math.tan(angle)).toFixed(maxDecimals)
               break
           }
+        } else {
+          displayValue = 'Error'
+        }
+      } else if (otherFunctions.includes(buttonValue)) {
+        const num = parseFloat(displayValue)
+        if (!isNaN(num)) {
+          switch (buttonValue) {
+            case 'sqr':
+              displayValue = Math.sqrt(num).toFixed(maxDecimals)
+              break
+            case 'x^2':
+              displayValue = Math.pow(num, 2)
+              break          
+            }
         } else {
           displayValue = 'Error'
         }
