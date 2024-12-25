@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const output = document.querySelector('.output')
   const buttons = document.querySelectorAll('.btn')
   const operators = ['+', '-', '*', '/']
+  const trigFunctions = ['sin', 'cos', 'tan']
   const maxDecimals = 8
 
   buttons.forEach(button => {
