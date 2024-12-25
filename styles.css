@@ -1,45 +1,20 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+
+:root {
+  --primary: #012222;
+  --secondary: #48a906;
+  --dark: #111;
+  --light: #eee;
+}
 
 body {
   font-family: 'Doto', sans-serif;
-}
-
-.calculator {
-  width: 350px;
-  height: 350px;
-  background-color: #333;
-  padding: 5px;
-}
-
-.output {
-  line-height: 40px;
-  background-color: #fff;
-  color: #111;
-  height: 40px;
-  margin-bottom: 10px;
-  font-size: 1.4rem;
   font-weight: 900;
-  text-align: right;
-  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--light);
+  background-color: var(--dark);
+  margin: 0;
 }
-
-.btn {
-  width: 50px;
-  height: 50px;
-  padding: 7px;
-  margin: 3px;
-  background-color: #ccc;
-  border-radius: 30%;
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 900;
-  cursor: pointer;
-  vertical-align: middle;
-  line-height: 50px;
-  display: inline-block;
-}
-
-.row {
-  width: 100%;
-  display: block;
-} */
