@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (buttonValue === 'C') {
         displayValue = '0'
-
-
       } else if (trigFunctions.includes(buttonValue)) {
-      
+        const angle = parseFloat(displayValue)
+        if (!isNaN(angle)) {
+          switch (buttonValue) {
 
-
-
-
-
+          }
+        } else {
+          displayValue = 'Error'
+        }
       } else {
         const lastChar = displayValue.slice(-1)
         
