@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const angle = parseFloat(displayValue)
         if (!isNaN(angle)) {
           switch (buttonValue) {
-
+            case 'sin':
+              displayValue = Math.sin(angle).toFixed(maxDecimals)
           }
         } else {
           displayValue = 'Error'
