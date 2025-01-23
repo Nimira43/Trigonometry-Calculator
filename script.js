@@ -2,79 +2,61 @@ document.addEventListener('DOMContentLoaded', () => {
   const output = document.querySelector('.output')
   const buttons = document.querySelectorAll('.btn')
   const operators = ['+', '-', '*', '/']
-  const trigFunctions = ['sin', 'cos', 'tan', 'sec', 'csc', 'cot']
-  const otherFunctions = ['sqr', 'x^2']
-  const maxDecimals = 8
+  
+  const trigFunctions = new Map([
+    ['sin', angle => Math.sin(angle).toFixed(8)],
+    ['cos', angle => Math.cos(angle).toFixed(8)],
+    ['tan', angle => Math.tan(angle).toFixed(8)],
+    ['sec', angle => (1 / Math.cos(angle)).toFixed(8)],
+    ['csc', angle => (1 / Math.sin(angle)).toFixed(8)],
+    ['cot', angle => (1 / Math.tan(angle)).toFixed(8)]
+  ])
+  
+  const otherFunctions = new Map([
+    ['sqr', num => Math.sqrt(num).toFixed(8)],
+    ['x^2', num => Math.pow(num, 2)]
+  ])
+  
+  const calculate = (expression) => {
+    try {
+      return (new Function('return ' + expression))().toFixed(8)
+    } catch {
+      return 'Error'
+    }
+  }
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const buttonValue = button.innerText
       let displayValue = output.innerText
-    
+
       if (displayValue === '0') {
         displayValue = ''
       }
 
       if (buttonValue === '=') {
-        try {
-          displayValue = eval(displayValue).toFixed(maxDecimals)
-        } catch (e) {
-          displayValue = 'Error'
-        }
+        displayValue = calculate(displayValue)
+      
       } else if (buttonValue === 'C') {
         displayValue = '0'
-      } else if (trigFunctions.includes(buttonValue)) {
+      
+      } else if (trigFunctions.has(buttonValue)) {
         const angle = parseFloat(displayValue)
-        if (!isNaN(angle)) {
-          switch (buttonValue) {
-            case 'sin':
-              displayValue = Math.sin(angle).toFixed(maxDecimals)
-              break
-            case 'cos':
-              displayValue = Math.cos(angle).toFixed(maxDecimals)
-              break
-            case 'tan':
-              displayValue = Math.tan(angle).toFixed(maxDecimals)
-              break
-            case 'sec':
-              displayValue = (1 / Math.cos(angle)).toFixed(maxDecimals)
-              break
-            case 'csc':
-              displayValue = (1 / Math.sin(angle)).toFixed(maxDecimals)
-              break
-            case 'cot':
-              displayValue = (1 / Math.tan(angle)).toFixed(maxDecimals)
-              break
-          }
-        } else {
-          displayValue = 'Error'
-        }
-      } else if (otherFunctions.includes(buttonValue)) {
+        displayValue = isNaN(angle) ? 'Error' : trigFunctions.get(buttonValue)(angle)
+      
+      } else if (otherFunctions.has(buttonValue)) {
         const num = parseFloat(displayValue)
-        if (!isNaN(num)) {
-          switch (buttonValue) {
-            case 'sqr':
-              displayValue = Math.sqrt(num).toFixed(maxDecimals)
-              break
-            case 'x^2':
-              displayValue = Math.pow(num, 2)
-              break          
-            }
-        } else {
-          displayValue = 'Error'
-        }
+        displayValue = isNaN(num) ? 'Error' : otherFunctions.get(buttonValue)(num)
+      
       } else {
         const lastChar = displayValue.slice(-1)
         
-        if (operators.includes(buttonValue)) {
-          if (operators.includes(lastChar)) {
-            displayValue = displayValue.slice(0, -1)
-          } else {
-            displayValue = eval(displayValue)
-          }
+        if (operators.includes(buttonValue) && operators.includes(lastChar)) {
+          displayValue = displayValue.slice(0, -1)
         }
         displayValue += buttonValue
       }
+
       output.innerText = displayValue
     })
   })
