@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const output = document.querySelector('.output')
   const buttons = document.querySelectorAll('.btn')
   const operators = ['+', '-', '*', '/']
+  
   const trigFunctions = new Map([
     ['sin', angle => Math.sin(angle).toFixed(8)],
     ['cos', angle => Math.cos(angle).toFixed(8)],
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ['csc', angle => (1 / Math.sin(angle)).toFixed(8)],
     ['cot', angle => (1 / Math.tan(angle)).toFixed(8)]
   ])
+  
   const otherFunctions = new Map([
     ['sqr', num => Math.sqrt(num).toFixed(8)],
     ['x^2', num => Math.pow(num, 2)]
@@ -17,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const calculate = (expression) => {
     try {
-      return (new Function('return ' + expression))().toFixed(8);
+      return (new Function('return ' + expression))().toFixed(8)
     } catch {
-      return 'Error';
+      return 'Error'
     }
   }
 
